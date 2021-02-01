@@ -51,6 +51,9 @@ cp -f ../PATCH/new/main/999-unlock-1608mhz-rk3328.patch ./target/linux/rockchip/
 #SWAP LAN WAN（满足千兆场景，可选
 sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/etc/board.d/02_network
 sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
+#调整IP网段
+sed -i "s,'192.168.1.1','192.168.2.1',g" package/base-files/files/bin/config_generate
+sed -i 's,"192.168.1.1","192.168.2.1",g' package/base-files/files/bin/config_generate
 
 ##必要的patch
 #luci network
@@ -391,6 +394,9 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns packag
 #翻译及部分功能优化
 cp -rf ../PATCH/duplicate/addition-trans-zh-r2s ./package/lean/lean-translate
 
+# 补充iperf3
+svn co https://github.com/openwrt/packages/trunk/net/iperf3  feeds/packages/net/iperf3
+ln -sf ../../../feeds/packages/net/iperf3 ./package/feeds/packages/iperf3
 
 #diskman
 mkdir -p package/luci-app-diskman && \
@@ -410,7 +416,7 @@ cp -rf ../PATCH/system/0001-fstools-support-extroot-for-non-MTD-rootfs_data.patc
 sed -i 's/+ubox +libubox/+fstools +ubox +libubox/' ./package/system/fstools/Makefile 
 
 #首次启动自动分配剩余tf卡空间
-cp -rf ../PATCH/first_run_script/auto_add_overlay.sh ./package/base-files/files/etc/uci-defaults/
+cp -rf ../PATCH/first_run_script/auto_add_overlay.sh ./package/base-files/files/etc/uci-defaults/14_auto_add_overlay
 
 #crypto
 echo '
