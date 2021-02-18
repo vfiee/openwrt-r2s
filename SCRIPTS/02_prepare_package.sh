@@ -1,6 +1,9 @@
 #!/bin/bash
 clear
 
+#凑合解决方案
+wget -qO - https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/3875.patch | patch -p1
+
 #使用O2级别的优化
 sed -i 's/Os/O2/g' include/target.mk
 #更新feed
@@ -18,7 +21,7 @@ sed -i 's,"192.168.1.1","192.168.2.1",g' package/base-files/files/bin/config_gen
 
 
 ##必要的patch
-wget -P target/linux/generic/pending-5.4 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/pending-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
+wget -P target/linux/generic/pending-5.4 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.4/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
 #luci network
 #patch -p1 < ../PATCH/new/main/luci_network-add-packet-steering.patch
 #patch jsonc
@@ -183,8 +186,6 @@ svn co https://github.com/1715173329/tencentcloud-openwrt-plugin-ddns/trunk/tenc
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns package/new/luci-app-aliddns
 #WOL
 svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
-#凑合解决方案
-cp -rf ../PATCH/duplicate/libncursesw6 ./package/lean/libncursesw6
 
 
 # 补充iperf3
