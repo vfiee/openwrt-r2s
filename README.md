@@ -1,6 +1,6 @@
 ## R2S 基于原生OpenWRT 的固件(AS IS, NO WARRANTY!!!)
-![R2S-OpenWrt](https://github.com/miniers/openwrt-nanopi-r2s/workflows/R2S-OpenWrt/badge.svg)
-![X86-OpenWrt](https://github.com/miniers/openwrt-nanopi-r2s/workflows/X86-OpenWrt/badge.svg)
+[![R2S-OpenWrt](https://github.com/miniers/openwrt-nanopi-r2s/workflows/R2S-OpenWrt/badge.svg)](https://github.com/miniers/openwrt-nanopi-r2s/actions/workflows/R2S-OpenWrt.yml)
+[![X86-OpenWrt](https://github.com/miniers/openwrt-nanopi-r2s/workflows/X86-OpenWrt/badge.svg)](https://github.com/miniers/openwrt-nanopi-r2s/actions/workflows/X86-OpenWrt.yml)
 ### 请勿用于商业用途!!! 请勿用于商业用途!!! 请勿用于商业用途!!! 请勿用于商业用途!!! 请勿用于商业用途!!!
 
 ### 下载地址：
