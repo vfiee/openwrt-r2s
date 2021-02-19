@@ -2,7 +2,7 @@
 clear
 
 #凑合解决方案
-wget -qO - https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/3875.patch | patch -p1
+#wget -qO - https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/3875.patch | patch -p1
 
 #使用O2级别的优化
 sed -i 's/Os/O2/g' include/target.mk
@@ -59,8 +59,6 @@ cp -f ../PATCH/duplicate/shortcut-fe ./package/base-files/files/etc/init.d
 ##获取额外package
 #（不用注释这里的任何东西，这不会对提升action的执行速度起到多大的帮助
 #（不需要的包直接修改seed就好
-#Ruby
-patch -p1 < ../PATCH/new/package/ruby.patch
 #luci-app-compressed-memory
 wget -O- https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/2840.patch | patch -p1
 mkdir ./package/new

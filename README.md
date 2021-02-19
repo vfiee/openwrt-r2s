@@ -1,5 +1,6 @@
 ## R2S 基于原生OpenWRT 的固件(AS IS, NO WARRANTY!!!)
 ![R2S-OpenWrt](https://github.com/miniers/openwrt-nanopi-r2s/workflows/R2S-OpenWrt/badge.svg)
+![X86-OpenWrt](https://github.com/miniers/openwrt-nanopi-r2s/workflows/X86-OpenWrt/badge.svg)
 ### 请勿用于商业用途!!! 请勿用于商业用途!!! 请勿用于商业用途!!! 请勿用于商业用途!!! 请勿用于商业用途!!!
 
 ### 下载地址：
@@ -21,10 +22,9 @@ https://github.com/miniers/openwrt-nanopi-r2s/actions
 4.刷写或升级后遇到任何问题，可以尝试ssh进路由器，输入fuck，回车后等待重启，或可解决，如仍有异常，建议ssh进路由器，输入firstboot -y && reboot now，回车后等待重启
 
 ### 版本信息：
-LUCI版本：19.07（当日最新）
+LUCI版本：21.02（当日最新）
 
-R2S其他模块版本：SNAPSHOT（当日最新）
-
+其他模块版本：21.02（当日最新）
 
 ### 特性及功能：
 1.O2编译
