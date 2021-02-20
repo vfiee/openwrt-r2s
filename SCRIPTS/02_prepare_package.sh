@@ -59,12 +59,19 @@ cp -f ../PATCH/duplicate/shortcut-fe ./package/base-files/files/etc/init.d
 ##获取额外package
 #（不用注释这里的任何东西，这不会对提升action的执行速度起到多大的帮助
 #（不需要的包直接修改seed就好
+#upx
+sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
+sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
+svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/upx tools/upx
+svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tools/ucl
 #luci-app-compressed-memory
-wget -O- https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/2840.patch | patch -p1
+#wget -O- https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/2840.patch | patch -p1
+wget -O- https://github.com/NoTengoBattery/openwrt/commit/40f1d5.patch | patch -p1
+wget -O- https://github.com/NoTengoBattery/openwrt/commit/a83a0b.patch | patch -p1
+wget -O- https://github.com/NoTengoBattery/openwrt/commit/6d5fb4.patch | patch -p1
 mkdir ./package/new
 cp -rf ../NoTengoBattery/feeds/luci/applications/luci-app-compressed-memory ./package/new/luci-app-compressed-memory
 sed -i 's,include ../..,include $(TOPDIR)/feeds/luci,g' ./package/new/luci-app-compressed-memory/Makefile
-rm -rf ./package/system/compressed-memory
 cp -rf ../NoTengoBattery/package/system/compressed-memory ./package/system/compressed-memory
 #R8168
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/r8168 package/new/r8168
@@ -132,6 +139,7 @@ git clone -b master --depth 1 https://github.com/jerrykuku/luci-app-argon-config
 git clone -b master --depth 1 https://github.com/garypang13/luci-theme-edge.git package/new/luci-theme-edge
 #AdGuard
 cp -rf ../openwrt-lienol/package/diy/luci-app-adguardhome ./package/new/luci-app-adguardhome
+sed -i '/INSTALL_DIR/i\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/AdGuardHome' tools/Makefile
 sed -i '/init/d' feeds/packages/net/adguardhome/Makefile
 #SS依赖
 rm -rf ./feeds/packages/net/shadowsocks-libev
