@@ -24,7 +24,7 @@ cp -rf ../PATCH/system/0001-fstools-support-extroot-for-non-MTD-rootfs_data.patc
 sed -i 's/+ubox +libubox/+fstools +ubox +libubox/' ./package/system/fstools/Makefile 
 
 #首次启动自动分配剩余tf卡空间
-cp -rf ../PATCH/first_run_script/auto_add_overlay.sh ./package/base-files/files/etc/uci-defaults/14_auto_add_overlay
+cp -rf ../PATCH/first_run_script/auto_add_overlay.sh ./package/base-files/files/etc/uci-defaults/99_auto_add_overlay
 
 
 <<'COMMENT'
